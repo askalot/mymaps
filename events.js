@@ -1,3 +1,6 @@
+(function($, google) {
+	var map;
+	var places;
 $(function() { // onload handler
   var melbourne = new google.maps.LatLng(-37.813611, 144.963056);
   var mapOptions = {
@@ -6,11 +9,31 @@ $(function() { // onload handler
 	mapTypeId: google.maps.MapTypeId.ROADMAP
   }
 
-  var map = new google.maps.Map($("#map_canvas")[0], mapOptions);
+  map = new google.maps.Map($("#map_canvas")[0], mapOptions);
 
-  var places = loadPlaces();
+  places = loadPlaces();
   drawPlaces(places, map);
+
+  $("form").submit(function(submitEvent) {
+  	submitEvent.preventDefault();
+	addPlaceBasedOnForm(this);
+	drawPlaces(places, map);
+  });
 });
+
+function addPlaceBasedOnForm(formElement) {
+	var formSelector = $(formElement);
+	var lat = parseFloat(formSelector.find("[name=lat]").val());
+    var lng = parseFloat(formSelector.find("[name=lng]").val());
+
+	var newPlace = {
+		"title": formSelector.find("[name=name]").val(),
+		"description": formSelector.find("[name=description]").val(),
+		"thumbnail": "gvrv.jpg",
+		"position": [ lat, lng ]
+	  }
+	places.push(newPlace)
+}
 
 function loadPlaces() {
 	return [
@@ -88,3 +111,4 @@ function drawPlaces(places, map) {
   });
 }
 
+})(jQuery, google);
