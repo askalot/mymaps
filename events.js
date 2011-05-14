@@ -1,4 +1,4 @@
-(function($, google) {
+(function($, google, store ) {
 	var map;
 	var places;
 $(function() { // onload handler
@@ -32,10 +32,14 @@ function addPlaceBasedOnForm(formElement) {
 		"thumbnail": "gvrv.jpg",
 		"position": [ lat, lng ]
 	  }
-	places.push(newPlace)
+	places.push(newPlace);
+	store.save({key: 'mymap', places: places});
 }
 
 function loadPlaces() {
+	store.get('mymap', function(r) {
+		console.log(r);
+	});
 	return [
 	  {
 		"title": "Woodfire BBQ - Meet other students from Honk Kong!",
@@ -111,4 +115,4 @@ function drawPlaces(places, map) {
   });
 }
 
-})(jQuery, google);
+})(jQuery, google, lawnchairStore);

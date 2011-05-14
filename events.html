@@ -5,9 +5,17 @@
 	<!--link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0a4.1/jquery.mobile-1.0a4.1.min.js"></script-->
-	<link rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="http://127.0.0.1:5984/_utils/script/couch.js?0.11.0"></script>
+	<script type="text/javascript" src="lib/lawnchair/src/adaptors/LawnchairAdaptorHelpers.js"></script>
+	<script type="text/javascript" src="lib/lawnchair/src/adaptors/DOMStorageAdaptor.js"></script>
+	<script type="text/javascript" src="lib/lawnchair/src/adaptors/CouchAdaptor.js"></script>
+	<script type="text/javascript" src="lib/lawnchair/src/Lawnchair.js"></script>
+	<script type="text/javascript">
+	var lawnchairStore = new Lawnchair({adaptor:'dom',name:'test'},function(){});
+	</script>
+
 	<script src="events.js"></script>
 <style>
   .map {
